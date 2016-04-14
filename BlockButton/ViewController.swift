@@ -11,11 +11,14 @@ import UIKit
 class ViewController: UIViewController {
     
     var changeIndex = 0
+    var sizeButtonFlag = false
     
     @IBOutlet weak var blockView: SPLBlockView!
     @IBOutlet weak var blockButton: SPLBlockButton!
     @IBOutlet weak var disableOrangeButton: SPLBlockButton!
     @IBOutlet weak var changeButton: SPLBlockButton!
+    @IBOutlet weak var sizeButton: SPLBlockButton!
+    @IBOutlet weak var sizeButtonConstraint: NSLayoutConstraint!
     
     @IBAction func orangeButtonClick(sender: SPLBlockButton) {
         print("Orange")
@@ -26,6 +29,7 @@ class ViewController: UIViewController {
         blockButton.enabled = !blockButton.enabled
         let newTitle = blockButton.enabled ? "Disable" : "Enable"
         disableOrangeButton.setTitle( newTitle, forState: .Normal)
+        print(blockButton.tintColor.description)
     }
     
     @IBAction func changeButtonClicked(sender: SPLBlockButton) {
@@ -42,6 +46,19 @@ class ViewController: UIViewController {
 //        }
 //        changeIndex = (changeIndex + 1) % 2
     }
+    
+    @IBAction func sizeButtonClicked(sender: SPLBlockButton) {
+        
+        let superWidth = sizeButton.superview!.frame.size.width
+        
+        if sizeButtonFlag {
+            sizeButtonConstraint.constant = 0.5 * superWidth
+        } else {
+            sizeButtonConstraint.constant = 0.2 * superWidth
+        }
+        sizeButtonFlag = !sizeButtonFlag
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

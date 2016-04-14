@@ -31,10 +31,9 @@ class SPLBlockView: UIView {
     // MARK: - drawRect()
     override func drawRect(rect: CGRect) {
         // Drawing code
-        guard let aDrawBlock = drawBlock else {
-            return
+        if drawBlock != nil {
+            drawBlock!(rect, tintColor)
         }
-        aDrawBlock(rect, tintColor)
     }
     
     // MARK: - Sample Closures

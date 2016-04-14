@@ -85,6 +85,12 @@ class SPLBlockButton: UIButton {
         commonSetup()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        print("LAYOUT")
+        blockView?.setNeedsDisplay()
+    }
+    
     func commonSetup() {
         
         blockView = SPLBlockView(frame: self.bounds)
@@ -128,7 +134,7 @@ class SPLBlockButton: UIButton {
     
     class func drawDisabled(stroke:CGFloat = 4.0) ->SPLDrawClosure {
         
-        let newBlock:SPLDrawClosure = { (rect, tintColor) in
+        let newBlock:SPLDrawClosure = { (rect, _) in
             
             let inset:CGFloat  = stroke / 2.0
             let drawRect = CGRectInset(rect, inset, inset)
