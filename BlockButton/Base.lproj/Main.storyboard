@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fmz-7A-Js3">
-                                <rect key="frame" x="20" y="20" width="240" height="158"/>
+                                <rect key="frame" x="20" y="20" width="240" height="243"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="haj-wN-JN7" customClass="SPLBlockView" customModule="BlockButton" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="73"/>
@@ -46,6 +46,14 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0c-SY-jlz" customClass="SPLBlockButton" customModule="BlockButton" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="170" width="240" height="73"/>
+                                        <color key="backgroundColor" red="1" green="0.82922076769999997" blue="0.42574355739999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Change"/>
+                                        <connections>
+                                            <action selector="changeButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KgQ-ZB-aPf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -54,6 +62,7 @@
                     <connections>
                         <outlet property="blockButton" destination="rnU-5S-glN" id="ruk-h0-5Di"/>
                         <outlet property="blockView" destination="haj-wN-JN7" id="8XL-9W-3Dl"/>
+                        <outlet property="changeButton" destination="v0c-SY-jlz" id="4fX-T8-H9f"/>
                         <outlet property="disableOrangeButton" destination="rkL-N4-K4U" id="OCP-wt-lUe"/>
                     </connections>
                 </viewController>
