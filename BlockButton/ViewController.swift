@@ -29,7 +29,6 @@ class ViewController: UIViewController {
         blockButton.enabled = !blockButton.enabled
         let newTitle = blockButton.enabled ? "Disable" : "Enable"
         disableOrangeButton.setTitle( newTitle, forState: .Normal)
-        print(blockButton.tintColor.description)
     }
     
     @IBAction func changeButtonClicked(sender: SPLBlockButton) {
@@ -62,12 +61,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.tintColor = UIColor.redColor()
         // Remove colors set in IB for clarity.
         let clearColor = UIColor.clearColor()
         blockView.backgroundColor = clearColor
         blockButton.backgroundColor = clearColor
         changeButton.backgroundColor = clearColor
-        self.view.tintColor = UIColor.redColor()
+        sizeButton.backgroundColor = clearColor
+        
+        sizeButton.setBlockForState( .Normal,
+                          drawBlock: SPLBlockView.drawOval())
+        sizeButton.setBlockForState( .Highlighted, drawBlock:nil)
     }
 
     override func didReceiveMemoryWarning() {

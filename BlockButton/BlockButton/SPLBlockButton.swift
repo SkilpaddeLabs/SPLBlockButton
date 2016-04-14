@@ -121,14 +121,14 @@ class SPLBlockButton: UIButton {
             newBlock = nil
         }
         blockView?.drawBlock = newBlock ?? blocks[.Normal]
-        blockView?.setNeedsDisplay()
     }
     
-    func setBlockForState(state:UIControlState, drawBlock:SPLDrawClosure) {
+    func setBlockForState(state:UIControlState, drawBlock:SPLDrawClosure?) {
         
         if let validState = state.toBlockState() {
             blocks[validState] = drawBlock
         }
+        updateDrawBlock()
     }
     
     class func drawDisabled(stroke:CGFloat = 4.0) ->SPLDrawClosure {
