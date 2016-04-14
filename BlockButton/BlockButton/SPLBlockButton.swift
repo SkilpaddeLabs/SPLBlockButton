@@ -98,12 +98,8 @@ class SPLBlockButton: UIButton {
         addSubview(blockView!)
     
         // Default Blocks
-        self.setBlockForState( .Highlighted,//.Normal,
-                    drawBlock: SPLBlockView.drawRoundedRect(shadowOffset:4.0))
-        self.setBlockForState( .Normal,//.Highlighted,
-                    drawBlock: SPLBlockView.drawRoundedRect())
-        self.setBlockForState( .Disabled,
-                    drawBlock: SPLBlockButton.drawDisabled())
+        self.setBlockForState( .Normal,
+                               drawBlock: SPLBlockView.drawRoundedRect())
         updateDrawBlock()
     }
     

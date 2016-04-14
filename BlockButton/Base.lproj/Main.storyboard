@@ -27,7 +27,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BlockView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOH-Xl-JbK">
                                                 <rect key="frame" x="71" y="24" width="98" height="21"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -45,7 +45,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkL-N4-K4U" customClass="SPLBlockButton" customModule="BlockButton" customModuleProvider="target">
-                                                <rect key="frame" x="178" y="0.0" width="162" height="128"/>
+                                                <rect key="frame" x="178" y="0.0" width="163" height="128"/>
                                                 <color key="backgroundColor" red="1" green="0.82922076769999997" blue="0.42574355739999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Disable"/>
                                                 <connections>
@@ -55,16 +55,8 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0c-SY-jlz" customClass="SPLBlockButton" customModule="BlockButton" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="280" width="340" height="128"/>
-                                        <color key="backgroundColor" red="1" green="0.50509126430879658" blue="0.46955946208021992" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Change"/>
-                                        <connections>
-                                            <action selector="changeButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pwf-jQ-5kZ"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ny-7Q-Emi">
-                                        <rect key="frame" x="0.0" y="420" width="340" height="128"/>
+                                        <rect key="frame" x="0.0" y="280" width="340" height="128"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INn-Cc-puj" customClass="SPLBlockButton" customModule="BlockButton" customModuleProvider="target">
                                                 <rect key="frame" x="109" y="34" width="122" height="59"/>
@@ -85,23 +77,31 @@
                                             <constraint firstItem="INn-Cc-puj" firstAttribute="centerY" secondItem="4ny-7Q-Emi" secondAttribute="centerY" id="PKT-OX-m8u"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0c-SY-jlz" customClass="SPLBlockButton" customModule="BlockButton" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="420" width="340" height="128"/>
+                                        <color key="backgroundColor" red="1" green="0.50509126430879658" blue="0.46955946208021992" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Change"/>
+                                        <connections>
+                                            <action selector="changeButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pwf-jQ-5kZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="blockButton" destination="rnU-5S-glN" id="ruk-h0-5Di"/>
                         <outlet property="blockView" destination="haj-wN-JN7" id="8XL-9W-3Dl"/>
                         <outlet property="changeButton" destination="v0c-SY-jlz" id="F5a-jR-9lv"/>
                         <outlet property="disableOrangeButton" destination="rkL-N4-K4U" id="OCP-wt-lUe"/>
+                        <outlet property="orangeButton" destination="rnU-5S-glN" id="1UL-m0-H5D"/>
                         <outlet property="sizeButton" destination="INn-Cc-puj" id="1yk-DH-Hpe"/>
                         <outlet property="sizeButtonConstraint" destination="wRb-Em-weP" id="Ht0-PS-Xiu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="490" y="387"/>
+            <point key="canvasLocation" x="348" y="410"/>
         </scene>
     </scenes>
 </document>

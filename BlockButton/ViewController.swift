@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     var sizeButtonFlag = false
     
     @IBOutlet weak var blockView: SPLBlockView!
-    @IBOutlet weak var blockButton: SPLBlockButton!
+    @IBOutlet weak var orangeButton: SPLBlockButton!
     @IBOutlet weak var disableOrangeButton: SPLBlockButton!
     @IBOutlet weak var changeButton: SPLBlockButton!
     @IBOutlet weak var sizeButton: SPLBlockButton!
@@ -26,8 +26,8 @@ class ViewController: UIViewController {
     
     @IBAction func disableOrangeClicked(sender: SPLBlockButton) {
         
-        blockButton.enabled = !blockButton.enabled
-        let newTitle = blockButton.enabled ? "Disable" : "Enable"
+        orangeButton.enabled = !orangeButton.enabled
+        let newTitle = orangeButton.enabled ? "Disable" : "Enable"
         disableOrangeButton.setTitle( newTitle, forState: .Normal)
     }
     
@@ -60,22 +60,26 @@ class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.tintColor = UIColor.redColor()
+        
         // Remove colors set in IB for clarity.
         let clearColor = UIColor.clearColor()
         blockView.backgroundColor = clearColor
-        blockButton.backgroundColor = clearColor
+        orangeButton.backgroundColor = clearColor
         changeButton.backgroundColor = clearColor
         sizeButton.backgroundColor = clearColor
         
-        sizeButton.setBlockForState( .Normal,
-                          drawBlock: SPLBlockView.drawOval())
-        sizeButton.setBlockForState( .Highlighted, drawBlock:nil)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        // Set Draw Blocks
+        orangeButton.setBlockForState( .Highlighted, drawBlock: SPLBlockView.drawRoundedRect(shadowOffset:4.0))
+        orangeButton.setBlockForState( .Disabled, drawBlock: SPLBlockButton.drawDisabled())
+        
+        disableOrangeButton.setBlockForState( .Highlighted, drawBlock: SPLBlockView.drawRoundedRect(shadowOffset:4.0))
+        
+        sizeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawOval())
+        
+        changeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawOval())
     }
 }
 
