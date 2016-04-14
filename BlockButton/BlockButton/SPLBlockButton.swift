@@ -11,6 +11,7 @@ import UIKit
 // MARK: - SPLBlockState
 // Maps UIControlState for use in dictionary.
 private enum SPLBlockState {
+    
     // TODO: Make all Control States available.
     case Normal, Highlighted, Disabled //, Selected, Focused, Application, Reserved
     
@@ -92,9 +93,9 @@ class SPLBlockButton: UIButton {
         addSubview(blockView!)
     
         // Default Blocks
-        self.setBlockForState( .Normal,
+        self.setBlockForState( .Highlighted,//.Normal,
                     drawBlock: SPLBlockView.drawRoundedRect(shadowOffset:4.0))
-        self.setBlockForState( .Highlighted,
+        self.setBlockForState( .Normal,//.Highlighted,
                     drawBlock: SPLBlockView.drawRoundedRect())
         self.setBlockForState( .Disabled,
                     drawBlock: SPLBlockButton.drawDisabled())

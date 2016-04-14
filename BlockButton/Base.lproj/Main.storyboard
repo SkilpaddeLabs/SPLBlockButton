@@ -36,7 +36,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkL-N4-K4U" customClass="SPLBlockButton" customModule="BlockButton" customModuleProvider="target">
-                                                <rect key="frame" x="128" y="0.0" width="113" height="73"/>
+                                                <rect key="frame" x="128" y="0.0" width="112" height="73"/>
                                                 <color key="backgroundColor" red="1" green="0.82922076769999997" blue="0.42574355739999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Disable"/>
                                                 <connections>
@@ -54,6 +54,7 @@
                     <connections>
                         <outlet property="blockButton" destination="rnU-5S-glN" id="ruk-h0-5Di"/>
                         <outlet property="blockView" destination="haj-wN-JN7" id="8XL-9W-3Dl"/>
+                        <outlet property="disableOrangeButton" destination="rkL-N4-K4U" id="OCP-wt-lUe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

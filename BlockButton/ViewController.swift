@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var blockView: SPLBlockView!
     @IBOutlet weak var blockButton: SPLBlockButton!
+    @IBOutlet weak var disableOrangeButton: SPLBlockButton!
     
     @IBAction func orangeButtonClick(sender: SPLBlockButton) {
         print("Orange")
@@ -19,6 +20,8 @@ class ViewController: UIViewController {
     
     @IBAction func disableOrangeClicked(sender: SPLBlockButton) {
         blockButton.enabled = !blockButton.enabled
+        let newTitle = blockButton.enabled ? "Disable" : "Enable"
+        disableOrangeButton.setTitle( newTitle, forState: .Normal)
     }
     
     override func viewDidLoad() {
