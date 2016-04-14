@@ -42,7 +42,11 @@ class SPLBlockView: UIView {
         //return drawTest()
         return drawRoundedRect(14.0)
     }
-    
+}
+
+// MARK: Extra Draw Blocks
+extension SPLBlockView {
+        
     class func drawRoundedRect(stroke:CGFloat = 4.0,
                          shadowOffset:CGFloat = 0.0) ->SPLDrawClosure {
         

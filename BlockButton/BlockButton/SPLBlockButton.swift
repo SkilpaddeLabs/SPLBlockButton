@@ -87,8 +87,7 @@ class SPLBlockButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        print("LAYOUT")
-        blockView?.setNeedsDisplay()
+        self.blockView?.frame = self.bounds
     }
     
     func commonSetup() {
