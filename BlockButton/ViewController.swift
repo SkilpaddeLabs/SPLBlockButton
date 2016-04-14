@@ -32,18 +32,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func changeButtonClicked(sender: SPLBlockButton) {
-
-        changeButton.tintColor = UIColor.blueColor()
-//        if changeIndex == 0 {
-//            changeButton.setBlockForState( .Normal,
-//                                drawBlock: SPLBlockView.drawTest())
-//            
-//         } else {
-//            
-//            changeButton.setBlockForState( .Normal,
-//                                drawBlock: SPLBlockView.drawRoundedRect())
-//        }
-//        changeIndex = (changeIndex + 1) % 2
+        
+        cycleChangeButton()
     }
     
     @IBAction func sizeButtonClicked(sender: SPLBlockButton) {
@@ -58,7 +48,6 @@ class ViewController: UIViewController {
         sizeButtonFlag = !sizeButtonFlag
     }
     
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -72,7 +61,8 @@ class ViewController: UIViewController {
         sizeButton.backgroundColor = clearColor
         
         // Set Draw Blocks
-        orangeButton.setBlockForState( .Highlighted, drawBlock: SPLBlockView.drawRoundedRect(shadowOffset:4.0))
+        orangeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawRoundedRect(8.0))
+        orangeButton.setBlockForState( .Highlighted, drawBlock: SPLBlockView.drawRoundedRect(8.0, shadowOffset:4.0))
         orangeButton.setBlockForState( .Disabled, drawBlock: SPLBlockButton.drawDisabled())
         
         disableOrangeButton.setBlockForState( .Highlighted, drawBlock: SPLBlockView.drawRoundedRect(shadowOffset:4.0))
@@ -80,6 +70,63 @@ class ViewController: UIViewController {
         sizeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawOval())
         
         changeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawOval())
+    }
+    
+    func cycleChangeButton() {
+        
+        switch changeIndex {
+        case 0:
+            changeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawRoundedRect())
+        case 1:
+            changeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawTest())
+        case 2:
+            setStarButton()
+        default: break
+        }
+        changeIndex = (changeIndex + 1) % 3
+    }
+    
+    func setStarButton() {
+        
+        changeButton.setBlockForState(.Normal) { (frame, color) in
+            
+            let colorSpace = CGColorSpaceCreateDeviceRGB()
+            let context = UIGraphicsGetCurrentContext()
+            
+            // Gradient
+            let gradientStartColor = UIColor.blackColor().CGColor
+            let gradientEndColor = color.CGColor
+            let colors = [gradientStartColor, gradientEndColor]
+            let locations = [1.0, 0.0].map{CGFloat($0)}
+            
+            let gradient = CGGradientCreateWithColors(colorSpace, colors, locations)
+            
+            // Star 
+            let xoffset:CGFloat = 0.5 * frame.size.width - 50.0
+            let yoffset:CGFloat = 10.0
+            let starPath = UIBezierPath()
+            starPath.moveToPoint(CGPoint(x: xoffset + 51.0, y: yoffset + 3.5))
+            starPath.addLineToPoint(CGPoint(x: xoffset + 68.46, y: yoffset + 29.49))
+            starPath.addLineToPoint(CGPoint(x: xoffset + 98.08, y: yoffset + 38.39))
+            starPath.addLineToPoint(CGPoint(x: xoffset + 79.25, y: yoffset + 63.36))
+            starPath.addLineToPoint(CGPoint(x: xoffset + 80.10, y: yoffset + 94.86))
+            starPath.addLineToPoint(CGPoint(x: xoffset + 51.00, y: yoffset + 84.3))
+            starPath.addLineToPoint(CGPoint(x: xoffset + 21.90, y: yoffset + 94.86))
+            starPath.addLineToPoint(CGPoint(x: xoffset + 22.75, y: yoffset + 63.36))
+            starPath.addLineToPoint(CGPoint(x: xoffset + 3.92,  y: yoffset + 38.39))
+            starPath.addLineToPoint(CGPoint(x: xoffset + 33.54, y: yoffset + 29.49))
+            starPath.closePath()
+            CGContextSaveGState(context)
+            starPath.addClip()
+            CGContextDrawLinearGradient(context, gradient,
+                                        CGPoint(x: xoffset + 51.0, y: yoffset + 3.5),
+                                        CGPoint(x: xoffset + 51.0, y: yoffset + 94.86),
+                                        .DrawsBeforeStartLocation)
+            CGContextRestoreGState(context)
+            UIColor.blackColor().setStroke()
+            starPath.lineWidth = 1;
+            starPath.stroke()
+        }
     }
 }
 
