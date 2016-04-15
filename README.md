@@ -1,6 +1,10 @@
 # SPLBlockButton
-UIButton subclass that allows assigning blocks of CoreGraphics code to draw their content. Great for creating widgets that scale to different screens
+UIButton subclass that allows assigning blocks of CoreGraphics code to draw their content. 
+
+* Avoid making a bunch of UIButton subclasses just to override drawInRect(). 
+* Great for creating widgets that scale to different screen sizes
 without having to constantly regenerate PNG's.
+* Just need a view and not a whole UIButton? Use SPLBlockView.
 
 
 ![alt tag](https://cloud.githubusercontent.com/assets/193383/14549024/300e675e-028a-11e6-97f3-ebe3d1cbd80f.png)
@@ -34,4 +38,4 @@ roundedButton.setBlockForState( .Normal ) { (rect, tintColor) in
 
 ### Hey, they're not called blocks in Swift.
 
-I originally made this in Obj-C and SPLClosureButton just doesn't roll off the tounge.
+ClosureButton just doesn't roll off the tounge the way BlockButton does. 
