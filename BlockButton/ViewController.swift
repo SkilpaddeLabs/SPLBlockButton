@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     var changeIndex = 0
     var sizeButtonFlag = false
+    var orangeButtonFlag = false
     
     @IBOutlet weak var blockView: SPLBlockView!
     @IBOutlet weak var orangeButton: SPLBlockButton!
@@ -21,7 +22,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var sizeButtonConstraint: NSLayoutConstraint!
     
     @IBAction func orangeButtonClick(sender: SPLBlockButton) {
+        
         print("Orange Button")
+        if orangeButtonFlag {
+            orangeButton.tintColor = self.view.tintColor
+        } else {
+            orangeButton.tintColor = UIColor.orangeColor()
+        }
+        orangeButtonFlag = !orangeButtonFlag
     }
     
     @IBAction func disableOrangeClicked(sender: SPLBlockButton) {
