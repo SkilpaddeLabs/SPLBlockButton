@@ -50,7 +50,6 @@
                                                 <state key="normal" title="Disable"/>
                                                 <connections>
                                                     <action selector="disableOrangeClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TDy-YW-y2z"/>
-                                                    <action selector="orangeButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1kc-nT-3X8"/>
                                                 </connections>
                                             </button>
                                         </subviews>

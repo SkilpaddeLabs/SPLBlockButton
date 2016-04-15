@@ -12,6 +12,7 @@ typealias SPLDrawClosure = (CGRect, UIColor)->Void
 
 class SPLBlockView: UIView {
 
+    var underDraw = CGSizeZero
     var drawBlock:SPLDrawClosure? {
         didSet {
             self.setNeedsDisplay()
@@ -34,9 +35,15 @@ class SPLBlockView: UIView {
     }
     // MARK: - drawRect()
     override func drawRect(rect: CGRect) {
+        
         // Drawing code
         if drawBlock != nil {
-            drawBlock!(rect, tintColor)
+            // Inset Frame
+            let xOffset = 0.5 * underDraw.width * rect.width
+            let yOffset = 0.5 * underDraw.height * rect.height
+            let insetFrame = CGRectInset(rect, xOffset, yOffset)
+            
+            drawBlock!(insetFrame, tintColor)
         }
     }
     

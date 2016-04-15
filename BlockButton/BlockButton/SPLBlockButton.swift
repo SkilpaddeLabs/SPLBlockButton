@@ -24,14 +24,6 @@ private enum SPLBlockState {
                 return .Highlighted
             case Disabled:
                 return .Disabled
-//            case Selected:
-//                return .Selected
-//            case Focused:
-//                return .Focused
-//            case Application:
-//                return .Application
-//            case Reserved:
-//                return .Reserved
         }
     }
 }
@@ -45,14 +37,6 @@ private extension UIControlState {
             return SPLBlockState.Highlighted
         case UIControlState.Disabled:
             return SPLBlockState.Disabled
-//        case UIControlState.Selected:
-//            return SPLBlockState.Selected
-//        case UIControlState.Focused:
-//            return SPLBlockState.Focused
-//        case UIControlState.Application:
-//            return SPLBlockState.Application
-//        case UIControlState.Reserved:
-//            return SPLBlockState.Reserved
         default:
             return nil
         }
@@ -63,6 +47,11 @@ private extension UIControlState {
 class SPLBlockButton: UIButton {
 
     var blockView:SPLBlockView?
+    var underDraw:CGSize {
+        get { return blockView?.underDraw ?? CGSizeZero }
+        set { blockView?.underDraw = newValue }
+    }
+    
     // var drawBlock:SPLDrawClosure?
     private var blocks = [SPLBlockState:SPLDrawClosure]()
     // MARK: - Button State
@@ -76,18 +65,15 @@ class SPLBlockButton: UIButton {
     
     // MARK: - init()
     override init(frame: CGRect) {
+        
         super.init(frame: frame)
         commonSetup()
     }
     
     required init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
         commonSetup()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.blockView?.frame = self.bounds
     }
     
     func commonSetup() {
@@ -96,11 +82,20 @@ class SPLBlockButton: UIButton {
         blockView?.backgroundColor = UIColor.clearColor()
         blockView?.userInteractionEnabled = false
         addSubview(blockView!)
+        
+        self.clipsToBounds = false
+        blockView?.clipsToBounds = false
     
         // Default Blocks
         self.setBlockForState( .Normal,
-                               drawBlock: SPLBlockView.drawRoundedRect())
+                    drawBlock: SPLBlockView.drawRoundedRect())
         updateDrawBlock()
+    }
+    
+    override func layoutSubviews() {
+        
+        super.layoutSubviews()
+        self.blockView?.frame = self.bounds
     }
     
     func updateDrawBlock() {

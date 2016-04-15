@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var sizeButtonConstraint: NSLayoutConstraint!
     
     @IBAction func orangeButtonClick(sender: SPLBlockButton) {
-        print("Orange")
+        print("Orange Button")
     }
     
     @IBAction func disableOrangeClicked(sender: SPLBlockButton) {
@@ -58,7 +58,6 @@ class ViewController: UIViewController {
         blockView.backgroundColor = clearColor
         orangeButton.backgroundColor = clearColor
         changeButton.backgroundColor = clearColor
-        sizeButton.backgroundColor = clearColor
         
         // Set Draw Blocks
         orangeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawRoundedRect(8.0))
@@ -67,23 +66,28 @@ class ViewController: UIViewController {
         
         disableOrangeButton.setBlockForState( .Highlighted, drawBlock: SPLBlockView.drawRoundedRect(shadowOffset:4.0))
         
+        sizeButton.underDraw = CGSize(width: 0.3, height: 0.3)
         sizeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawOval())
+        sizeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawOval(shadowOffset: 4.0))
         
         changeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawOval())
     }
     
     func cycleChangeButton() {
+    
+        changeIndex = (changeIndex + 1) % 4
         
         switch changeIndex {
         case 0:
-            changeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawRoundedRect())
+            changeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawOval())
         case 1:
-            changeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawTest())
+            changeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawRoundedRect())
         case 2:
+            changeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawTest())
+        case 3:
             setStarButton()
         default: break
         }
-        changeIndex = (changeIndex + 1) % 3
     }
     
     func setStarButton() {
