@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         // Set Draw Blocks
         orangeButton.setBlockForState( .Normal, drawBlock: SPLBlockView.drawRoundedRect(8.0))
         orangeButton.setBlockForState( .Highlighted, drawBlock: SPLBlockView.drawRoundedRect(8.0, shadowOffset:4.0))
-        orangeButton.setBlockForState( .Disabled, drawBlock: SPLBlockButton.drawDisabled())
+        orangeButton.setBlockForState( .Disabled, drawBlock: SPLBlockView.drawDisabled())
         
         disableOrangeButton.setBlockForState( .Highlighted, drawBlock: SPLBlockView.drawRoundedRect(shadowOffset:4.0))
         

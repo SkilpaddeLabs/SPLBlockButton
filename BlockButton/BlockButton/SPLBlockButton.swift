@@ -52,7 +52,6 @@ class SPLBlockButton: UIButton {
         set { blockView?.underDraw = newValue }
     }
     
-    // var drawBlock:SPLDrawClosure?
     private var blocks = [SPLBlockState:SPLDrawClosure]()
     // MARK: - Button State
     override var highlighted:Bool {
@@ -120,19 +119,5 @@ class SPLBlockButton: UIButton {
             blocks[validState] = drawBlock
         }
         updateDrawBlock()
-    }
-    
-    class func drawDisabled(stroke:CGFloat = 4.0) ->SPLDrawClosure {
-        
-        let newBlock:SPLDrawClosure = { (rect, _) in
-            
-            let inset:CGFloat  = stroke / 2.0
-            let drawRect = CGRectInset(rect, inset, inset)
-            let rectPath = UIBezierPath(roundedRect: drawRect, cornerRadius: stroke)
-            rectPath.lineWidth = stroke
-            UIColor.grayColor().setStroke()
-            rectPath.stroke()
-        }
-        return newBlock
     }
 }

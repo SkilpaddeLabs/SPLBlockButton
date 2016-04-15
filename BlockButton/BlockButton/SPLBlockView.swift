@@ -14,9 +14,7 @@ class SPLBlockView: UIView {
 
     var underDraw = CGSizeZero
     var drawBlock:SPLDrawClosure? {
-        didSet {
-            self.setNeedsDisplay()
-        }
+        didSet { self.setNeedsDisplay() }
     }
     
     // MARK: - init()
@@ -96,6 +94,20 @@ extension SPLBlockView {
             }
             
             tintColor.setStroke()
+            rectPath.stroke()
+        }
+        return newBlock
+    }
+    
+    class func drawDisabled(stroke:CGFloat = 4.0) ->SPLDrawClosure {
+        
+        let newBlock:SPLDrawClosure = { (rect, _) in
+            
+            let inset:CGFloat  = stroke / 2.0
+            let drawRect = CGRectInset(rect, inset, inset)
+            let rectPath = UIBezierPath(roundedRect: drawRect, cornerRadius: stroke)
+            rectPath.lineWidth = stroke
+            UIColor.grayColor().setStroke()
             rectPath.stroke()
         }
         return newBlock
